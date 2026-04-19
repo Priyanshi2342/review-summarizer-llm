@@ -19,16 +19,26 @@ The system is designed to be robust, modular, and adaptable to different website
 
 ---
 
-##  Project Structure
+## 📁 Project Structure
+
+<pre>
 review-summarizer/
-│── main.py # Entry point
-│── scraper.py # Scrapes reviews from URL
-│── preprocess.py # Cleans and prepares text
-│── llm.py # Handles LLM API calls
-│── reviews_output.csv # Final output
-│── .env # API key (not committed)
-│── requirements.txt
-│── README.md
+│
+├── main.py              # Entry point of the application
+├── scraper.py           # Scrapes reviews from product URL
+├── preprocess.py        # Cleans and preprocesses review text
+├── llm.py               # Handles LLM API interaction (OpenRouter)
+│
+├── reviews_output.csv   # Generated output file
+├── requirements.txt     # Project dependencies
+├── README.md            # Project documentation
+│
+├── .env                 # API key (not committed)
+├── .gitignore           # Ignore sensitive/system files
+│
+├── __pycache__/         # Python cache (auto-generated)
+└── venv/                # Virtual environment (not committed)
+</pre>
 
 ---
 
@@ -42,23 +52,39 @@ This avoids dependency on paid APIs while maintaining full compatibility with Op
 
 ---
 
-##  How to Run
+## ▶️ How to Run
 
-1. Clone the repository
-git clone <your-repo-link>
-cd review-summarizer
+<pre>
+1. Clone the Repository
+   git clone https://github.com/YOUR_USERNAME/review-summarizer-llm.git
+   cd review-summarizer-llm
 
-2. Install dependencies
-pip install -r requirements.txt
+2. Create Virtual Environment
+   python -m venv venv
 
-3. Add your API key
+3. Activate Environment
 
-Create a .env file:
+   Windows (PowerShell):
+   venv\Scripts\activate
 
-OPENROUTER_API_KEY=your_api_key_here
-4. Run the application
-python main.py
-5. Provide a product URL when prompted
+   Mac/Linux:
+   source venv/bin/activate
+
+4. Install Dependencies
+   pip install -r requirements.txt
+
+5. Create .env file and add API key
+   OPENROUTER_API_KEY=your_api_key_here
+
+6. Run the Application
+   python main.py
+
+7. Enter Product URL (example)
+   https://webscraper.io/test-sites/e-commerce/static/product/518
+
+8. Output will be saved in
+   reviews_output.csv
+</pre>
 
 ##  Tested URL
 Example product page used for testing: http://books.toscrape.com/catalogue/category/books/travel_2/index.html
@@ -68,4 +94,44 @@ Example product page used for testing: http://books.toscrape.com/catalogue/categ
 - Used OpenRouter instead of OpenAI to avoid paid API dependency  
 - Implemented fallback reviews to handle scraping failures  
 - Used modular structure for scalability and readability  
-- Limited tokens to reduce API usage and latency  
+- Limited tokens to reduce API usage and latency
+  
+  ## ⚠️ Limitations
+
+<pre>
+- Some websites (e.g., Amazon, Flipkart) may block scraping
+- HTML structure varies across websites
+- Free LLM APIs may have rate limits
+</pre>
+
+---
+
+## 🛠️ Tech Stack
+
+<pre>
+- Python
+- BeautifulSoup
+- Requests
+- Pandas
+- OpenRouter API
+</pre>
+
+---
+
+## 🎯 Future Improvements
+
+<pre>
+- Support multi-page scraping
+- Add a web UI (Streamlit)
+- Improve scraper robustness
+- Store data in a database
+</pre>
+
+---
+
+## 📌 Notes
+
+<pre>
+- API keys are securely managed using environment variables
+- .env file is excluded from version control
+</pre>
